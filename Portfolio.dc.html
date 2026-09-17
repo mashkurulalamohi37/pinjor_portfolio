@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Md. Masfakuzzaman — Solutions Architect, Flutter & Automation</title>
 <meta name="description" content="Six years turning paper-based and hand-compiled processes into AI-assisted workflows and automated data pipelines. Database administration underneath, Flutter and React on top, automation architecture across the middle.">
-<script src="./support.js"></script>
 <link rel="stylesheet" href="_ds/industry-a0e0c434-164a-4b1d-b430-204a06d6d040/styles.css">
-<script src="_ds/industry-a0e0c434-164a-4b1d-b430-204a06d6d040/_ds_bundle.js"></script>
+
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
@@ -75,7 +74,6 @@ a:hover{color:var(--color-accent-900);text-decoration:underline}
 </style>
 </head>
 <body>
-<x-dc>
 
 <nav style="position:sticky;top:0;z-index:20;background:rgba(242,242,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
   <div class="wrap" style="display:flex;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px">
@@ -186,11 +184,11 @@ a:hover{color:var(--color-accent-900);text-decoration:underline}
 
     <!-- Category Filter Bar -->
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterCategory('all', this)">All (17)</button>
-      <button class="filter-btn" onclick="filterCategory('ai', this)">AI &amp; Automation</button>
-      <button class="filter-btn" onclick="filterCategory('healthcare', this)">Healthcare &amp; Public Sector</button>
-      <button class="filter-btn" onclick="filterCategory('commerce', this)">Commerce &amp; Retail</button>
-      <button class="filter-btn" onclick="filterCategory('mobile', this)">Mobile (Flutter)</button>
+      <button type="button" class="filter-btn active" data-cat="all" onclick="filterCategory('all', this)">All (17)</button>
+      <button type="button" class="filter-btn" data-cat="ai" onclick="filterCategory('ai', this)">AI &amp; Automation</button>
+      <button type="button" class="filter-btn" data-cat="healthcare" onclick="filterCategory('healthcare', this)">Healthcare &amp; Public Sector</button>
+      <button type="button" class="filter-btn" data-cat="commerce" onclick="filterCategory('commerce', this)">Commerce &amp; Retail</button>
+      <button type="button" class="filter-btn" data-cat="mobile" onclick="filterCategory('mobile', this)">Mobile (Flutter)</button>
     </div>
 
     <!-- AI & Automation Section -->
@@ -432,16 +430,15 @@ a:hover{color:var(--color-accent-900);text-decoration:underline}
     <div style="margin-top:32px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,242,243,.45)">Dhaka, Bangladesh</div>
   </div>
 </footer>
-</x-dc>
 
 <!-- Minimal Toast for quick copying -->
 <div id="toast">Copied to clipboard!</div>
 
 <script>
 function toggleResumeMenu(e) {
-  e.stopPropagation();
+  if (e) e.stopPropagation();
   const menu = document.getElementById('resumeMenu');
-  menu.classList.toggle('open');
+  if (menu) menu.classList.toggle('open');
 }
 
 window.addEventListener('click', function(e) {
@@ -452,18 +449,50 @@ window.addEventListener('click', function(e) {
 });
 
 function copyContact(text, msg) {
-  navigator.clipboard.writeText(text).then(() => {
-    const toast = document.getElementById('toast');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(msg);
+    }).catch(() => {
+      fallbackCopy(text, msg);
+    });
+  } else {
+    fallbackCopy(text, msg);
+  }
+}
+
+function fallbackCopy(text, msg) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showToast(msg);
+  } catch(err) {}
+  document.body.removeChild(ta);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (toast) {
     toast.innerText = msg;
     toast.className = 'show';
     setTimeout(() => { toast.className = ''; }, 2500);
-  });
+  }
 }
 
 function filterCategory(cat, btn) {
   const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const matchedBtn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+    if (matchedBtn) matchedBtn.classList.add('active');
+  }
 
   const groups = document.querySelectorAll('.work-group');
   groups.forEach(g => {
@@ -479,6 +508,16 @@ function filterCategory(cat, btn) {
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const cat = this.getAttribute('data-cat') || 'all';
+      filterCategory(cat, this);
+    });
+  });
+});
 </script>
 </body>
 </html>
