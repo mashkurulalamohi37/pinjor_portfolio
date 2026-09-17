@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md. Masfakuzzaman — Solutions Architect, Flutter & Automation</title>
+<meta name="description" content="Six years turning paper-based and hand-compiled processes into AI-assisted workflows and automated data pipelines. Database administration underneath, Flutter and React on top, automation architecture across the middle.">
+<script src="./support.js"></script>
+<link rel="stylesheet" href="_ds/industry-a0e0c434-164a-4b1d-b430-204a06d6d040/styles.css">
+<script src="_ds/industry-a0e0c434-164a-4b1d-b430-204a06d6d040/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--color-accent-700);text-decoration:none}
+a:hover{color:var(--color-accent-900);text-decoration:underline}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+.eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)}
+.sec{padding:60px 0;border-top:1px solid var(--color-divider)}
+.sechd{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.sechd h2{margin:0;font-size:30px}
+.sechd .count{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(29,31,32,.5)}
+.grid{display:grid;gap:20px}
+.pill{display:inline-flex;align-items:center;font-size:11px;letter-spacing:.04em;padding:3px 9px;border:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;color:rgba(29,31,32,.68);background:var(--color-surface);border-radius:2px}
+.kpi b{display:block;font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1}
+.kpi span{display:block;font-size:12px;line-height:1.4;color:rgba(29,31,32,.6);margin-top:4px}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0}
+.fnode{flex:1 1 150px;min-width:150px;padding:14px 16px;border:1px solid var(--color-divider);background:var(--color-bg);display:flex;flex-direction:column;gap:5px}
+.fnode.ai{background:var(--color-accent-100);border-color:var(--color-accent)}
+.fnode .k{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(29,31,32,.55)}
+.fnode.ai .k{color:var(--color-accent-800)}
+.fnode .t{font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.15}
+.fnode .d{font-size:12px;line-height:1.5;color:rgba(29,31,32,.7)}
+.arrow{display:flex;align-items:center;justify-content:center;width:26px;color:var(--color-neutral-500);flex:none}
+.proj{padding:24px;border:1px solid var(--color-divider);display:flex;flex-direction:column;gap:11px;background:var(--color-bg);transition:border-color .15s ease}
+.proj:hover{border-color:var(--color-accent)}
+.proj h3{margin:0;font-size:22px}
+.proj .lede{margin:0;font-size:14px;line-height:1.6;color:rgba(29,31,32,.72)}
+.proj ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:6px}
+.proj li{font-size:13.5px;line-height:1.55}
+.proj li::marker{color:var(--color-accent)}
+.role-line{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(29,31,32,.5);margin-top:auto;padding-top:4px}
+.tl{display:grid;grid-template-columns:minmax(96px,120px) 16px minmax(0,1fr);padding:18px 0;border-top:1px solid var(--color-divider)}
+.tl .yr{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:rgba(29,31,32,.5);padding-top:3px}
+.tl .dot{position:relative}
+.tl .dot::before{content:"";position:absolute;top:7px;left:3px;width:7px;height:7px;background:var(--color-accent)}
+.tl strong{display:block;font-family:var(--font-heading);font-weight:600;font-size:18px;line-height:1.2}
+.tl .org{display:block;font-size:13px;color:rgba(29,31,32,.6);margin:1px 0 6px}
+.tl p{margin:0;font-size:13.5px;line-height:1.55;color:rgba(29,31,32,.72);max-width:680px}
+.mrow{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-top:1px solid var(--color-divider);font-size:13.5px}
+.mrow .yr{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:rgba(29,31,32,.5);white-space:nowrap}
+
+/* Filter controls matching design system */
+.filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.filter-btn{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--color-divider);background:var(--color-surface);color:rgba(29,31,32,.7);cursor:pointer;border-radius:2px;transition:all .15s ease}
+.filter-btn:hover{border-color:var(--color-accent);color:var(--color-text)}
+.filter-btn.active{background:var(--color-accent-900);color:var(--color-bg);border-color:var(--color-accent-900)}
+
+/* Dropdown styling */
+.dropdown{position:relative;display:inline-block}
+.dropdown-menu{display:none;position:absolute;right:0;top:calc(100% + 4px);background:var(--color-bg);border:1px solid var(--color-divider);box-shadow:var(--shadow-md);z-index:50;min-width:260px;padding:6px 0}
+.dropdown-menu.open{display:block}
+.dropdown-menu a{display:block;padding:8px 14px;font-size:13px;color:var(--color-text);text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--color-divider) 40%, transparent)}
+.dropdown-menu a:last-child{border-bottom:none}
+.dropdown-menu a:hover{background:var(--color-accent-100);color:var(--color-accent-900)}
+.dropdown-menu small{display:block;font-size:11px;color:rgba(29,31,32,.55);font-family:ui-monospace,Menlo,monospace}
+
+/* Quick toast */
+#toast{visibility:hidden;min-width:200px;background:var(--color-accent-900);color:var(--color-bg);text-align:center;padding:10px 16px;position:fixed;z-index:100;bottom:24px;right:24px;font-size:12.5px;font-family:ui-monospace,Menlo,monospace;border:1px solid var(--color-accent);opacity:0;transition:opacity .2s, bottom .2s}
+#toast.show{visibility:visible;opacity:1;bottom:30px}
+
+.clickable-badge{cursor:pointer;transition:opacity .15s ease}
+.clickable-badge:hover{opacity:.75}
+
+@media (max-width:860px){.sechd h2{font-size:26px}.wrap{padding:0 20px}}
+</style>
+</head>
+<body>
+<x-dc>
+
+<nav style="position:sticky;top:0;z-index:20;background:rgba(242,242,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+  <div class="wrap" style="display:flex;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px">
+    <span style="font-family:var(--font-heading);font-weight:600;font-size:17px;letter-spacing:.04em;margin-right:auto">MD. MASFAKUZZAMAN</span>
+    <a href="#approach" style="font-size:13.5px;color:rgba(29,31,32,.7)">Approach</a>
+    <a href="#work" style="font-size:13.5px;color:rgba(29,31,32,.7)">Work</a>
+    <a href="#track" style="font-size:13.5px;color:rgba(29,31,32,.7)">Track record</a>
+    <a href="#toolkit" style="font-size:13.5px;color:rgba(29,31,32,.7)">Toolkit</a>
+    
+    <!-- Resume Dropdown -->
+    <div class="dropdown">
+      <button class="btn btn-secondary" onclick="toggleResumeMenu(event)" style="font-size:12.5px;padding:4px 10px;font-family:ui-monospace,Menlo,monospace">
+        Download CV ▾
+      </button>
+      <div class="dropdown-menu" id="resumeMenu">
+        <a href="./uploads/Md.Masfakuzzaman_Update_Resume_For_Flutter_Developer.pdf" download>
+          <strong>Flutter Developer Resume</strong>
+          <small>Mobile & Cross-Platform Focus</small>
+        </a>
+        <a href="./uploads/Resume_of_Flutter_developer_&_Healthcare_Business_analyst_Md.Masfakuzzaman.pdf" download>
+          <strong>Healthcare BA & Flutter Resume</strong>
+          <small>Clinical Workflows & EHR Focus</small>
+        </a>
+        <a href="./uploads/Md.Masfakuzzaman_update_Database_resume.pdf" download>
+          <strong>Database Administrator Resume</strong>
+          <small>PostgreSQL & SQL Server Focus</small>
+        </a>
+      </div>
+    </div>
+
+    <a class="btn btn-primary" href="mailto:pinjor033@gmail.com" style="font-size:13px;padding:5px 12px">Hire / contact</a>
+  </div>
+</nav>
+
+<header style="background:var(--color-accent-900);color:var(--color-bg);padding:64px 0 0">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--color-accent-300)">Solutions architect · AI workflow &amp; automation · Dhaka, Bangladesh</div>
+    <h1 style="margin:16px 0 0;font-size:clamp(38px,5.6vw,64px);max-width:16ch">I replace manual work with systems that run themselves.</h1>
+    <p style="margin:20px 0 0;max-width:62ch;font-size:17px;line-height:1.6;color:rgba(242,242,243,.82)">Six years turning paper-based and hand-compiled processes — hospital records, national reporting, retail stock, drug lookups — into AI-assisted workflows and automated data pipelines. Database administration underneath, Flutter and React on top, automation architecture across the middle.</p>
+    
+    <div style="display:flex;flex-wrap:wrap;gap:10px 14px;margin:26px 0 0;font-size:13.5px">
+      <span class="clickable-badge" onclick="copyContact('pinjor033@gmail.com', 'Email copied to clipboard!')" style="color:var(--color-accent-300)">pinjor033@gmail.com</span>
+      <span style="opacity:.35">·</span>
+      <span class="clickable-badge" onclick="copyContact('+8801776830347', 'Phone copied to clipboard!')" style="color:var(--color-accent-300)">+880 1776 830347</span>
+      <span style="opacity:.35">·</span>
+      <a href="https://github.com/pinjor" target="_blank" rel="noopener" style="color:var(--color-accent-300)">github.com/pinjor</a>
+      <span style="opacity:.35">·</span>
+      <a href="https://play.google.com/store/apps/details?id=com.afnanquran.app" target="_blank" rel="noopener" style="color:var(--color-accent-300)">Google Play</a>
+      <span style="opacity:.35">·</span>
+      <a href="https://www.linkedin.com/in/md-masfakuzzaman/" target="_blank" rel="noopener" style="color:var(--color-accent-300)">LinkedIn</a>
+    </div>
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;margin-top:44px;border-top:1px solid rgba(242,242,243,.2)">
+      <div class="kpi" style="padding:22px 20px 26px;border-right:1px solid rgba(242,242,243,.2)"><b>6+ yrs</b><span style="color:rgba(242,242,243,.65)">DBA → Flutter delivery → solutions architecture</span></div>
+      <div class="kpi" style="padding:22px 20px 26px;border-right:1px solid rgba(242,242,243,.2)"><b>17</b><span style="color:rgba(242,242,243,.65)">Production systems &amp; platforms shipped</span></div>
+      <div class="kpi" style="padding:22px 20px 26px;border-right:1px solid rgba(242,242,243,.2)"><b>7</b><span style="color:rgba(242,242,243,.65)">National, hospital-network or multi-tenant SaaS deployments</span></div>
+      <div class="kpi" style="padding:22px 20px 26px"><b>5,850+</b><span style="color:rgba(242,242,243,.65)">Drug brands auto-indexed by one scraping pipeline</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="approach" style="border-top:none">
+  <div class="wrap">
+    <div class="sechd">
+      <h2>How I build automation</h2>
+      <span class="count">The pattern behind every system below</span>
+    </div>
+    <p style="max-width:70ch;font-size:15px;line-height:1.65;color:rgba(29,31,32,.72);margin:-8px 0 26px">Every engagement follows the same spine: audit the manual process, decide what a rule can do and what genuinely needs a model, put a guardrail and a human gate around the model, then write the result into a data layer that can be trusted and reported on.</p>
+    <div class="flow">
+      <div class="fnode blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="k">01 · Audit</span><span class="t">Map the manual steps</span><span class="d">Workflow mapping with the people doing the work — which steps are repetitive, which are judgement.</span></div>
+      <div class="arrow"><svg width="10" height="10" viewBox="0 0 8 8" aria-hidden="true"><path d="M0 0 L6 4 L0 8" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></div>
+      <div class="fnode blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="k">02 · Decide</span><span class="t">Rules vs. model</span><span class="d">Deterministic rules where correctness is cheap; AI only where extraction, matching or language is the hard part.</span></div>
+      <div class="arrow"><svg width="10" height="10" viewBox="0 0 8 8" aria-hidden="true"><path d="M0 0 L6 4 L0 8" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></div>
+      <div class="fnode ai blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="k">03 · AI step</span><span class="t">Extract, match, generate</span><span class="d">Document extraction, brand→generic matching, scraped-index enrichment, AI-authored engineering rules.</span></div>
+      <div class="arrow"><svg width="10" height="10" viewBox="0 0 8 8" aria-hidden="true"><path d="M0 0 L6 4 L0 8" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></div>
+      <div class="fnode blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="k">04 · Guardrail</span><span class="t">Gates &amp; boundaries</span><span class="d">Confidence thresholds, tenant isolation, module boundaries, and a human approving what shouldn't be automatic.</span></div>
+      <div class="arrow"><svg width="10" height="10" viewBox="0 0 8 8" aria-hidden="true"><path d="M0 0 L6 4 L0 8" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></div>
+      <div class="fnode blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span class="k">05 · Land it</span><span class="t">Trusted data layer</span><span class="d">Schema design, validation, audit trail, live dashboards — automation is only as reliable as the database under it.</span></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:34px">
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h5 style="margin:0 0 6px">AI in production, not in slides</h5>
+        <p style="margin:0;font-size:13.5px;line-height:1.6;color:rgba(29,31,32,.72)">A 5,850-brand pharmaceutical index built by an automated scraping and enrichment pipeline, with generic substitution and price comparison replacing manual lookups.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h5 style="margin:0 0 6px">Automation that survives handoff</h5>
+        <p style="margin:0;font-size:13.5px;line-height:1.6;color:rgba(29,31,32,.72)">124 automated tests gating every Pulse POS release, Docker Compose deployment, and a documented pilot/UAT process — so the automation keeps working without me.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h5 style="margin:0 0 6px">Guardrails for AI-assisted delivery</h5>
+        <p style="margin:0;font-size:13.5px;line-height:1.6;color:rgba(29,31,32,.72)">On EduCore Nexus I authored the governing AI-engineering rules so AI coding tools stay inside security and module boundaries when generating implementation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sechd">
+      <h2>Selected work</h2>
+      <span class="count">17 systems · grouped by what they automated</span>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">All (17)</button>
+      <button class="filter-btn" onclick="filterCategory('ai', this)">AI &amp; Automation</button>
+      <button class="filter-btn" onclick="filterCategory('healthcare', this)">Healthcare &amp; Public Sector</button>
+      <button class="filter-btn" onclick="filterCategory('commerce', this)">Commerce &amp; Retail</button>
+      <button class="filter-btn" onclick="filterCategory('mobile', this)">Mobile (Flutter)</button>
+    </div>
+
+    <!-- AI & Automation Section -->
+    <div class="work-group" data-group="ai">
+      <div class="eyebrow" style="margin-bottom:14px">AI &amp; automation platforms</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(330px,1fr));margin-bottom:38px">
+        <div class="proj blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Healora 24 · HealthConnect Pro</h3><span class="pill">React · TypeScript · FastAPI</span></div>
+          <p class="lede">Unified hospital, telemedicine and pharmaceutical-intelligence platform. The AI and scraping layer is the product, not a feature.</p>
+          <ul>
+            <li>Automated pharmaceutical index — 5,850+ drug brands scraped, deduplicated and indexed with generic substitution and price comparison, replacing manual drug lookups.</li>
+            <li>Digital prescription studio with QR verification, multi-chamber scheduling and automated revenue/commission reporting.</li>
+            <li>Family vaccination tracking with automated reminders; telemedicine consultations over one centralized EHR.</li>
+          </ul>
+          <div class="role-line">Role — full-stack build incl. the automated data pipeline</div>
+        </div>
+        <div class="proj blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>EduCore Nexus</h3><span class="pill">FastAPI · PostgreSQL · Kafka</span></div>
+          <p class="lede">Architecture blueprint for a multi-tenant education SaaS — K-12 through Bangladesh Madrasahs — from one shared codebase, with AI-assisted implementation under written constraints.</p>
+          <ul>
+            <li>Authored the governing AI-engineering rules so AI coding tools stay inside security and module boundaries while generating implementation.</li>
+            <li>Schema-per-tenant PostgreSQL isolation so institutions' data cannot cross-leak, even by developer error.</li>
+            <li>"Core + Plugin" model loading industry-specific workflows dynamically per subscription — Ebtedayee–Kamil tiers, TVET tracks.</li>
+          </ul>
+          <div class="role-line">Role — solutions architecture &amp; system design</div>
+        </div>
+        <div class="proj blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Pulse POS</h3><span class="pill">React 19 · FastAPI · PostgreSQL</span></div>
+          <p class="lede">Multi-tenant point-of-sale platform serving grocery, fashion and pharmacy verticals from one codebase, with the commercial SaaS machinery automated underneath.</p>
+          <ul>
+            <li>Automated tenant onboarding, subscription plans and usage-limit enforcement — no manual account setup.</li>
+            <li>Retail workflow automated end-to-end: sales, purchasing, GRN receiving, returns/refunds/exchanges, stock ledger.</li>
+            <li>124 automated tests (76 backend + 48 frontend) gating every release, Docker Compose deployment, documented pilot/UAT.</li>
+          </ul>
+          <div class="role-line">Role — full-stack build, architecture → pilot readiness</div>
+        </div>
+        <div class="proj blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Evercare Hospitals reporting pipeline</h3><span class="pill">Power BI · SQL Server</span></div>
+          <p class="lede">Replaced hand-compiled monthly reports with a live pipeline pulling straight from operational data.</p>
+          <ul>
+            <li>Automated extraction and transformation from SQL Server with built-in accuracy validation.</li>
+            <li>Live dashboards across hospital operations, patient care and financial performance.</li>
+          </ul>
+          <div class="role-line">Role — data pipeline &amp; BI dashboard design</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Healthcare Section -->
+    <div class="work-group" data-group="healthcare">
+      <div class="eyebrow" style="margin-bottom:14px">Healthcare &amp; public-sector systems</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:38px">
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Sylhet MAG Osmani Medical Hospital</h3><span class="pill">Java · PostgreSQL</span></div>
+          <p class="lede">Full digitization of one of Sylhet's major hospitals — the entire management system moved off paper, with centralized patient records replacing physical filing.</p>
+          <div class="role-line">Role — backend &amp; database implementation · 2024–2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Border Guard Bangladesh hospital system</h3><span class="pill">Java · PostgreSQL</span></div>
+          <p class="lede">Standardized records, scheduling and case tracking across the BGB medical network, previously handled manually per location.</p>
+          <div class="role-line">Role — backend &amp; database implementation · 2021–2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>UNICEF vaccination GIS dashboard</h3><span class="pill">Flutter · Riverpod</span></div>
+          <p class="lede">Real-time vaccination coverage across Bangladesh for immunization-campaign planning — multiple vaccine API endpoints (BCG, Penta and others) integrated into one live map with location-based analytics.</p>
+          <div class="role-line">Role — Flutter developer, dashboard &amp; API integration · 2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>COVID-19 national dashboard</h3><span class="pill">Java · PostgreSQL</span></div>
+          <p class="lede">Built for the Prime Minister's Office — countrywide case data aggregated from scattered reports into a single public-facing site.</p>
+          <div class="role-line">Role — backend &amp; database implementation · 2021–2022</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Popular Healthcare</h3><span class="pill">Flutter · Dart</span></div>
+          <p class="lede">Patient-facing app removing the paper trail from clinic visits: online booking instead of walk-ins, EHR access, and QR-scan retrieval of prescription history at the pharmacy desk.</p>
+          <div class="role-line">Role — sole Flutter developer, architecture → release · 2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Hospital management portal</h3><span class="pill">React · PostgreSQL</span></div>
+          <p class="lede">Patients and doctors connected directly — live doctor schedules, real-time chat, and digital e-prescriptions over unified records.</p>
+          <div class="role-line">Role — full-stack build, React + PostgreSQL · 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commerce Section -->
+    <div class="work-group" data-group="commerce">
+      <div class="eyebrow" style="margin-bottom:14px">Commerce, retail &amp; field automation</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-bottom:38px">
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>WrikMart</h3><span class="pill">React · FastAPI · PostgreSQL</span></div>
+          <p class="lede">Cross-border pre-order commerce from India, Dubai and Thailand through sourcing agents: automated 9-stage order tracking, dual-ledger accounting with a two-way remittance-acceptance protocol, and a privacy-by-design agent view masking customer identity and pricing.</p>
+          <div class="role-line">Role — full-stack architecture and build</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Bio Palace Staff Mart</h3><span class="pill">React · FastAPI · PostgreSQL</span></div>
+          <p class="lede">Internal ration commerce + ERP with quota entitlements enforced automatically per booking cycle, a manufacturing layer feeding shared dashboards, and later CRM/loyalty phases.</p>
+          <div class="role-line">Role — backend &amp; platform build across phases</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Offline shop management</h3><span class="pill">Flutter · GetX</span></div>
+          <p class="lede">Sales, inventory and invoicing that keep working without internet, with automatic background sync on reconnect, low-stock alerts and sales analytics.</p>
+          <div class="role-line">Role — sole Flutter developer · 2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>EMI management with QR provisioning</h3><span class="pill">Flutter · GetX</span></div>
+          <p class="lede">Offline-first installment management for field agents: QR activation and collection, automated payment reminders and transaction tracking that cut manual follow-up and repayment errors.</p>
+          <div class="role-line">Role — sole Flutter developer · 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Section -->
+    <div class="work-group" data-group="mobile">
+      <div class="eyebrow" style="margin-bottom:14px">Mobile products (Flutter)</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Bangla Quran &amp; Islamic utilities</h3><span class="pill">Flutter · Dart</span></div>
+          <p class="lede">Offline-first suite: dual-alert prayer reminders scheduled locally, a Shariah-compliant Islamic Will generator producing a single-page PDF with bundled fonts, Qibla compass, Hijri calendar, Sunnah tracker and a vocabulary quiz.</p>
+          <div class="role-line">Role — sole Flutter developer · <a href="https://play.google.com/store/apps/details?id=com.afnanquran.app" target="_blank" rel="noopener">Google Play ↗</a></div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Celebrity fan engagement app</h3><span class="pill">Flutter · Riverpod</span></div>
+          <p class="lede">Direct-to-fan communication at scale — real-time chat, event management with automated push announcements, and personalized dashboards on both sides.</p>
+          <div class="role-line">Role — sole Flutter developer · 2025</div>
+        </div>
+        <div class="proj">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap"><h3>Weather app</h3><span class="pill">Flutter · Dart</span></div>
+          <p class="lede">Live forecast data, interactive maps and configurable alert thresholds — a clean end-to-end mobile architecture reference.</p>
+          <div class="role-line">Role — sole Flutter developer · 2024</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec" id="track">
+  <div class="wrap">
+    <div class="sechd"><h2>Track record</h2><span class="count">2019 → present</span></div>
+    <div class="tl" style="border-top:none">
+      <span class="yr">2026 —</span><span class="dot"></span>
+      <span><strong>Solutions Architect</strong><span class="org">Apptriangle Limited</span><p>Owns automation-architecture design across client engagements — auditing manual workflows, designing rules-based automation and scheduled data pipelines, and connecting mobile apps, backend services and reporting layers into one automated flow.</p></span>
+    </div>
+    <div class="tl">
+      <span class="yr">2024 – 2026</span><span class="dot"></span>
+      <span><strong>Flutter Developer &amp; Healthcare Business Analyst</strong><span class="org">eGeneration Ltd.</span><p>Built patient- and hospital-facing Flutter apps while analyzing clinical workflows to define exactly what each system needed to automate.</p></span>
+    </div>
+    <div class="tl">
+      <span class="yr">2021 – 2024</span><span class="dot"></span>
+      <span><strong>Database Administrator</strong><span class="org">eGeneration Ltd. · associate → DBA</span><p>Administered PostgreSQL and SQL Server across live hospital and government systems — schema design, performance tuning, reliability.</p></span>
+    </div>
+    <div class="tl">
+      <span class="yr">2020 – 2021</span><span class="dot"></span>
+      <span><strong>Inspection Officer</strong><span class="org">Akij Group Ltd.</span><p>Field-based quality and process inspection across operational sites.</p></span>
+    </div>
+    <div class="tl">
+      <span class="yr">2019 – 2020</span><span class="dot"></span>
+      <span><strong>Lecturer</strong><span class="org">National Institute of Engineering &amp; Technology</span><p>Taught undergraduate computer science coursework.</p></span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="toolkit">
+  <div class="wrap">
+    <div class="sechd"><h2>Toolkit</h2><span class="count">Six stacks worked end-to-end</span></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h6 style="margin:0 0 8px;color:var(--color-accent-700)">Automation &amp; AI</h6>
+        <p style="margin:0 0 6px;font-size:14.5px">Workflow mapping, data-scraping pipelines, retrieval &amp; matching, scheduled jobs, AI-engineering rulebooks</p>
+        <p style="margin:0;font-size:12.5px;color:rgba(29,31,32,.6)">Confidence gates and human-approval steps designed in, not bolted on.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h6 style="margin:0 0 8px;color:var(--color-accent-700)">Backend &amp; data</h6>
+        <p style="margin:0 0 6px;font-size:14.5px">Java, FastAPI, PostgreSQL, MySQL, SQL Server, Power BI, Kafka</p>
+        <p style="margin:0;font-size:12.5px;color:rgba(29,31,32,.6)">DBA background — schema design, performance tuning, reporting pipelines.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h6 style="margin:0 0 8px;color:var(--color-accent-700)">Mobile</h6>
+        <p style="margin:0 0 6px;font-size:14.5px">Flutter, Dart, GetX, Riverpod</p>
+        <p style="margin:0;font-size:12.5px;color:rgba(29,31,32,.6)">Offline-first patterns across both state-management ecosystems.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h6 style="margin:0 0 8px;color:var(--color-accent-700)">Web &amp; platform</h6>
+        <p style="margin:0 0 6px;font-size:14.5px">React, TypeScript, HTML, CSS, Docker Compose</p>
+        <p style="margin:0;font-size:12.5px;color:rgba(29,31,32,.6)">Multi-tenant SaaS patterns, event-driven architecture design.</p>
+      </div>
+      <div style="padding:18px 20px;border:1px solid var(--color-divider)">
+        <h6 style="margin:0 0 8px;color:var(--color-accent-700)">Collaboration</h6>
+        <p style="margin:0;font-size:14.5px">Git, GitLab, GitHub, Jira, Trello</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="edu">
+  <div class="wrap">
+    <div class="sechd"><h2>Education &amp; certifications</h2></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+      <div>
+        <h6 style="margin:0 0 14px;color:var(--color-accent-700)">Education</h6>
+        <div style="margin-bottom:16px"><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">BSc. Computer Science &amp; Engineering</strong><span style="font-size:13.5px;color:rgba(29,31,32,.62)">Bangladesh Army University of Science and Technology — GPA 3.84 / 4.00</span></div>
+        <div style="margin-bottom:16px"><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">HSC, Science</strong><span style="font-size:13.5px;color:rgba(29,31,32,.62)">Cantonment Public School and College, Rangpur — GPA 5.00 / 5.00</span></div>
+        <div><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">SSC, Science</strong><span style="font-size:13.5px;color:rgba(29,31,32,.62)">Rangpur Zilla School — GPA 5.00 / 5.00</span></div>
+      </div>
+      <div>
+        <h6 style="margin:2px 0 6px;color:var(--color-accent-700)">Certifications</h6>
+        <div class="mrow"><span>App Development with Flutter — Ostad</span><span class="yr">2025</span></div>
+        <div class="mrow"><span>Quick Start Your Flutter Journey — Ostad</span><span class="yr">2024</span></div>
+        <div class="mrow"><span>Coding Problem Solving — Ostad</span><span class="yr">2024</span></div>
+        <div class="mrow"><span>Complete Flutter App Development Bootcamp with Dart — Udemy</span><span class="yr">2024</span></div>
+        <div class="mrow"><span>PostgreSQL Database Administration on Windows/Linux — Udemy</span><span class="yr">2023</span></div>
+        <div class="mrow"><span>SQL Server Administration — Udemy</span><span class="yr">2023</span></div>
+        <div class="mrow"><span>SQL Basic — HackerRank</span><span class="yr">2022</span></div>
+        <h6 style="margin:22px 0 6px;color:var(--color-accent-700)">Award</h6>
+        <div class="mrow"><span>Quarter-finalist, ICT Quiz Contest — BAUST</span><span class="yr">2017</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--color-accent-900);color:var(--color-bg);padding:56px 0 48px">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--color-accent-300)">Available for solutions-architecture &amp; AI-automation roles</div>
+    <h2 style="margin:14px 0 12px;font-size:clamp(28px,4vw,42px);max-width:26ch">Tell me which manual process is costing you the most.</h2>
+    <p style="margin:0 0 26px;max-width:56ch;font-size:15.5px;line-height:1.6;color:rgba(242,242,243,.78)">I'll come back with the workflow map, where AI actually earns its place, and what the data layer underneath needs to look like.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+      <a class="btn btn-primary" href="mailto:pinjor033@gmail.com" style="text-decoration:none">pinjor033@gmail.com</a>
+      <a class="btn btn-secondary" href="tel:+8801776830347" style="text-decoration:none;color:var(--color-bg);border-color:rgba(242,242,243,.35)">+880 1776 830347</a>
+      <a class="btn btn-secondary" href="https://github.com/pinjor" target="_blank" rel="noopener" style="text-decoration:none;color:var(--color-bg);border-color:rgba(242,242,243,.35)">GitHub</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/md-masfakuzzaman/" target="_blank" rel="noopener" style="text-decoration:none;color:var(--color-bg);border-color:rgba(242,242,243,.35)">LinkedIn</a>
+      <a class="btn btn-secondary" href="./uploads/Md.Masfakuzzaman_Update_Resume_For_Flutter_Developer.pdf" download style="text-decoration:none;color:var(--color-bg);border-color:rgba(242,242,243,.35)">Download CV</a>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:40px;padding-top:26px;border-top:1px solid rgba(242,242,243,.2)">
+      <div><div class="eyebrow" style="color:rgba(242,242,243,.5);margin-bottom:8px">Reference</div><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">Farhan Sadik</strong><span style="font-size:13px;color:rgba(242,242,243,.7)">Project Director, eGeneration Ltd.<br>farhan.sadik@egeneration.co</span></div>
+      <div><div class="eyebrow" style="color:rgba(242,242,243,.5);margin-bottom:8px">Reference</div><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">Md. Shamim Sarwar</strong><span style="font-size:13px;color:rgba(242,242,243,.7)">DGM &amp; HOD, Enterprise Application — Bashundhara Oil &amp; Gas<br>s.sarwar@abgbashundhara.com</span></div>
+      <div><div class="eyebrow" style="color:rgba(242,242,243,.5);margin-bottom:8px">Reference</div><strong style="font-family:var(--font-heading);font-weight:600;font-size:17px;display:block">Mohammad Sahajada</strong><span style="font-size:13px;color:rgba(242,242,243,.7)">Senior Principal Database Engineer, eGeneration Ltd.<br>mohammad.shahajada@egeneration.co</span></div>
+    </div>
+    <div style="margin-top:32px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,242,243,.45)">Dhaka, Bangladesh</div>
+  </div>
+</footer>
+</x-dc>
+
+<!-- Minimal Toast for quick copying -->
+<div id="toast">Copied to clipboard!</div>
+
+<script>
+function toggleResumeMenu(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('resumeMenu');
+  menu.classList.toggle('open');
+}
+
+window.addEventListener('click', function(e) {
+  const menu = document.getElementById('resumeMenu');
+  if (menu && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+  }
+});
+
+function copyContact(text, msg) {
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.className = 'show';
+    setTimeout(() => { toast.className = ''; }, 2500);
+  });
+}
+
+function filterCategory(cat, btn) {
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const groups = document.querySelectorAll('.work-group');
+  groups.forEach(g => {
+    if (cat === 'all') {
+      g.style.display = 'block';
+    } else {
+      const gType = g.getAttribute('data-group');
+      if (gType === cat) {
+        g.style.display = 'block';
+      } else {
+        g.style.display = 'none';
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
